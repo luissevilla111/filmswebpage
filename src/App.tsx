@@ -1,12 +1,12 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Card from "./components/UI/card/Card";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import FilmsPage from './pages/FilmsPage';
 
 function App() {
   return (
     <div className="App">
-      <Card />
+     <FilmsPage/>
     </div>
   );
 }
