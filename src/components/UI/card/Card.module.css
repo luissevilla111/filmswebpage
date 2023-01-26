@@ -1,0 +1,47 @@
+.card-container {
+  max-width: 400px;
+  /* background-color: red; */
+  border: 1px solid black;
+  border-radius: 20px;
+  box-shadow: 0px 1px 12px 1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 1px 12px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 1px 12px 1px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.card-container:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  filter: grayscale(0);
+}
+
+.grayscale {
+  filter: grayscale(1);
+}
+
+.card-container img {
+  max-width: 100%;
+}
+
+.card-info {
+  padding: 0 15px;
+}
+
+.card-info p {
+  color: gray;
+}
+
+.card-stats{
+    width: 100%;
+    display: flex;
+    background: black;
+    /* justify-content:center; */
+}
+
+.card-stats > div{
+    border: 2px solid black;
+}
+.card-stats > div:first-child{
+    border-right: 2px solid white;
+}
