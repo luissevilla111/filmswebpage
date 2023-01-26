@@ -1,21 +1,14 @@
+import Card from "../UI/card/Card";
 import classes from "./FilmList.module.css";
 
 const FilmList = () => {
   return (
     <div className={classes["list-films"]}>
-      <p>HHHH</p>
-      <p>IIII</p>
-      <p>JJJJJ</p>
-      <p>JJJJJ</p>
-      <p>JJJJJ</p>
-      <p>JJJJJ</p>
-      <p>JJJJJ</p>
-      <p>JJJJJ</p>
-      <p>JJJJJ</p>
-      <p>JJJJJ</p>
-      <p>JJJJJ</p>
-      <p>JJJJJ</p>
-      <p>JJJJJ</p>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </div>
   );
 };
