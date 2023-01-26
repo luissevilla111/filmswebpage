@@ -1,0 +1,5 @@
+.list-films{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
