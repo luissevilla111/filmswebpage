@@ -40,23 +40,24 @@
   padding: 0 15px;
 }
 .card-info h2{
- 
+ color: #DD1C1A;
 }
 
 .card-info p {
-  color: gray;
+  color: #07A0C3;
+
 }
 
 .card-stats{
     width: 100%;
     display: flex;
     
-    background: black;
+    background: #DD1C1A;
     /* justify-content:center; */
 }
 
 .card-stats > div{
-    border: 2px solid black;
+    border: 2px solid #DD1C1A;
 }
 .card-stats > div:first-child{
     border-right: 2px solid white;

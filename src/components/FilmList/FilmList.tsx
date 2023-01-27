@@ -15,6 +15,9 @@ const FilmList = () => {
 
       console.log(filmsFetchedObj.data.films);
       const allFilms = filmsFetchedObj.data.films;
+      const nextLink = filmsFetchedObj.data.lastKey;
+
+      console.log(nextLink);
       setFilms(allFilms);
     } catch (err) {
       setFilms([]);

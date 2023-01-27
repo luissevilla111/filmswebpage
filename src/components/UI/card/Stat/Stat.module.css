@@ -1,6 +1,7 @@
 .stat{
     flex: 1;
     color:white;
+    
     padding: 10px;
     display: flex;
     flex-direction: column;
