@@ -6,7 +6,7 @@ const Stat: React.FC<{ value: number; desc: string; isStar: boolean }> = (
   props
 ) => {
   const [rating, setRating] = useState(0);
-  
+
   return (
     <div className={classes["stat"]}>
       <p className={classes["value"]}>
