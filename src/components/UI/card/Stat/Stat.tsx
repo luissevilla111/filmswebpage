@@ -11,7 +11,7 @@ const Stat: React.FC<{ value: number; desc: string; isStar: boolean }> = (
     <div className={classes["stat"]}>
       <p className={classes["value"]}>
         {props.isStar ? (
-          <Rating initialValue={+props.value} readonly={true} size={20} />
+          <Rating initialValue={props.value} readonly={true} size={20} allowFraction = {true}/>
         ) : (
           props.value
         )}
