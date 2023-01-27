@@ -2,6 +2,8 @@ import { Film } from "../../../models/Film";
 import classes from "./Card.module.css";
 import Stat from "./Stat/Stat";
 import React from "react";
+
+
 const Card: React.FC<Film> = (props) => {
   return (
     <div className={`${classes["card-container"]} ${classes["grayscale"]}`}>
@@ -18,8 +20,8 @@ const Card: React.FC<Film> = (props) => {
         </p>
       </div>
       <div className={classes["card-stats"]}>
-        <Stat></Stat>
-        <Stat></Stat>
+        <Stat desc="Stars" value={+props.Stars} isStar = {true}></Stat>
+        <Stat desc="Minutes" value={+props.Duration_Minutes} isStar = {false}></Stat>
       </div>
     </div>
   );

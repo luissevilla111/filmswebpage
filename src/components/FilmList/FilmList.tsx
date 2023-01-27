@@ -10,7 +10,7 @@ const FilmList = () => {
   const fetchFilmsHandler = useCallback(async () => {
     try {
       const filmsFetchedObj = await axios.get<GetFilmsResponse>(
-        "https://......"
+        `${process.env.REACT_APP_API_FILMS}/films`
       );
 
       console.log(filmsFetchedObj.data.films);
