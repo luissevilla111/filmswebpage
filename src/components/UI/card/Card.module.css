@@ -10,6 +10,7 @@
   transition: all 0.3s ease-in-out;
   position: relative;
   display: grid;
+  grid-template-rows: 0.8fr 1fr auto;
  
 }
 
@@ -19,6 +20,11 @@
   filter: grayscale(0);
   z-index: 1;
   
+  
+}
+
+.card-img{
+  background-position: center;
 }
 
 .grayscale {
