@@ -9,14 +9,18 @@ const Card: React.FC<Film> = (props) => {
     backgroundSize: "cover",
   };
 
+  const getShortenText = (text: string) => {
+    return text.substring(0, 200).concat("...");
+  };
+
   return (
     <div className={`${classes["card-container"]} ${classes["grayscale"]}`}>
       <div className={classes["card-img"]} style={myStyle}>
         {/* <img src={props.Image_Url} alt="no imag"></img> */}
       </div>
-      <div className={classes["card-info"]}  >
+      <div className={classes["card-info"]}>
         <h2>{props.Name}</h2>
-        <p>{props.Description}</p>
+        <p>{getShortenText(props.Description)}</p>
       </div>
       <div className={classes["card-stats"]}>
         <Stat desc="Stars" value={+props.Stars} isStar={true}></Stat>
