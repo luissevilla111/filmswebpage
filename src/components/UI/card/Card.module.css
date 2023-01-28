@@ -1,5 +1,5 @@
 .card-container {
-  max-width: 400px;
+  max-width: 300px;
   /* background-color: red; */
   border: 1px solid black;
   border-radius: 20px;
@@ -8,6 +8,9 @@
   -moz-box-shadow: 0px 1px 12px 1px rgba(0, 0, 0, 0.75);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
+  position: relative;
+  display: grid;
+  grid-template-rows: 0.8fr 1fr auto;
  
 }
 
@@ -17,6 +20,11 @@
   filter: grayscale(0);
   z-index: 1;
   
+  
+}
+
+.card-img{
+  background-position: center;
 }
 
 .grayscale {
@@ -25,25 +33,31 @@
 
 .card-container img {
   max-width: 100%;
+  /* max-height: 300px; */
 }
 
 .card-info {
   padding: 0 15px;
 }
+.card-info h2{
+ color: #DD1C1A;
+}
 
 .card-info p {
-  color: gray;
+  color: #07A0C3;
+
 }
 
 .card-stats{
     width: 100%;
     display: flex;
-    background: black;
+    
+    background: #DD1C1A;
     /* justify-content:center; */
 }
 
 .card-stats > div{
-    border: 2px solid black;
+    border: 2px solid #DD1C1A;
 }
 .card-stats > div:first-child{
     border-right: 2px solid white;
