@@ -99,3 +99,23 @@
   border: 0;
   margin: 10px 0;
 }
+
+.btn-form-disabled {
+  background-color: gray !important;
+  cursor: not-allowed;
+}
+
+.error-class {
+  /* outline: none; */
+  /* border-color: red; */
+  /*  animation: name-of-animation 1s infinite !important; */
+}
+
+@keyframes name-of-animation {
+  0% {
+    border-color: red;
+  }
+  100% {
+    border-color: white;
+  }
+}
