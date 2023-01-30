@@ -1,4 +1,5 @@
 .card-container {
+  min-width: 250px;
   max-width: 300px;
   /* background-color: red; */
   border: 1px solid black;
@@ -11,7 +12,14 @@
   position: relative;
   display: grid;
   grid-template-rows: 0.8fr 1fr auto;
- 
+  margin: 0 auto;
+  filter: grayscale(1);
+}
+
+.card-edit {
+  min-width: 50% !important;
+  filter: grayscale(0) !important;
+  /* filter: grayscale(0) !important; */
 }
 
 .card-container:hover {
@@ -19,12 +27,11 @@
   cursor: pointer;
   filter: grayscale(0);
   z-index: 1;
-  
-  
 }
 
-.card-img{
+.card-img {
   background-position: center;
+  /* background-color: gray; */
 }
 
 .grayscale {
@@ -38,27 +45,32 @@
 
 .card-info {
   padding: 0 15px;
+  background-color: white;
+  /* text-overflow: ellipsis; */
+  overflow: hidden;
+  overflow-wrap: break-word;
+  min-height: 200px;
+  /* inline-size: 100%; */
 }
-.card-info h2{
- color: #DD1C1A;
+.card-info h2 {
+  color: #dd1c1a;
 }
 
 .card-info p {
-  color: #07A0C3;
-
+  color: #07a0c3;
 }
 
-.card-stats{
-    width: 100%;
-    display: flex;
-    
-    background: #DD1C1A;
-    /* justify-content:center; */
+.card-stats {
+  width: 100%;
+  display: flex;
+
+  background: #dd1c1a;
+  /* justify-content:center; */
 }
 
-.card-stats > div{
-    border: 2px solid #DD1C1A;
+.card-stats > div {
+  border: 2px solid #dd1c1a;
 }
-.card-stats > div:first-child{
-    border-right: 2px solid white;
+.card-stats > div:first-child {
+  border-right: 2px solid white;
 }

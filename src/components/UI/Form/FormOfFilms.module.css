@@ -119,3 +119,7 @@
     border-color: white;
   }
 }
+
+.card-Section {
+  flex: 1;
+}

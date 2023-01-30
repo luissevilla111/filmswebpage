@@ -57,22 +57,14 @@ const FilmList = () => {
             Saga,
             Stars,
           } = film;
-          return (
-            <Card
-              key={`${Saga}_${Name}`}
-              Name={Name}
-              Description={Description}
-              Added_Time_Utc={Added_Time_Utc}
-              Duration_Minutes={Duration_Minutes}
-              Genders={Genders}
-              Image_Url={Image_Url}
-              Saga={Saga}
-              Stars={Stars}
-            />
-          );
+          return <Card film={film} isEditing={false} key={`${Saga}_${Name}`} />;
         })}
       </div>
-      <Button text={!pagination ? "Back to Page 1" : "Next..."} fxClick={fetchFilmsHandler} params={pagination} />
+      <Button
+        text={!pagination ? "Back to Page 1" : "Next..."}
+        fxClick={fetchFilmsHandler}
+        params={pagination}
+      />
     </>
   );
 };

@@ -25,6 +25,62 @@ const FormOfFilms = () => {
   const [errorStateFilm, setErrorStateFilm] =
     useState<filmErrorForm>(INITIAL_STATE);
 
+  const [nameInput, setNameInput] = useState("");
+  const [sagaInput, setSagaInput] = useState("");
+  const [descriptionInput, setDescriptionInput] = useState("");
+  const [durationInput, setDurationInput] = useState("");
+  const [imageUrlInput, setImageUrlInput] = useState("");
+  const [starsInput, setStarsInput] = useState("");
+
+  const nameInputOnChangeHandler = (
+    event: React.FormEvent<HTMLInputElement>
+  ) => {
+    const newName = event.currentTarget.value;
+
+    setNameInput(newName);
+  };
+
+  const sagaInputOnChangeHandler = (
+    event: React.FormEvent<HTMLInputElement>
+  ) => {
+    const newSaga = event.currentTarget.value;
+
+    setSagaInput(newSaga);
+  };
+
+  const descriptionInputOnChangeHandler = (
+    event: React.FormEvent<HTMLInputElement>
+  ) => {
+    const newDescription = event.currentTarget.value;
+
+    setDescriptionInput(newDescription);
+  };
+
+  const durationInputOnChangeHandler = (
+    event: React.FormEvent<HTMLInputElement>
+  ) => {
+    const newDuration = event.currentTarget.value;
+    console.log(newDuration);
+
+    setDurationInput(newDuration);
+  };
+
+  const imageUrlInputOnChangeHandler = (
+    event: React.FormEvent<HTMLInputElement>
+  ) => {
+    const newImageUrl = event.currentTarget.value;
+
+    setImageUrlInput(newImageUrl);
+  };
+
+  const starsInputOnChangeHandler = (
+    event: React.FormEvent<HTMLInputElement>
+  ) => {
+    const newStars = event.currentTarget.value;
+
+    setStarsInput(newStars);
+  };
+
   return (
     <div className={classes["full-page"]}>
       <div className={classes["form-view"]}>
@@ -33,13 +89,14 @@ const FormOfFilms = () => {
             <h1>Film Registration</h1>
 
             <Formik
+              enableReinitialize={true}
               initialValues={{
-                nameFilm: "",
-                sagafilm: "",
-                descriptionFilm: "",
-                durationtionFilm: "",
-                imageUrlFilm: "",
-                starsFilm: "",
+                nameFilm: nameInput,
+                sagafilm: sagaInput,
+                descriptionFilm: descriptionInput,
+                durationtionFilm: durationInput,
+                imageUrlFilm: imageUrlInput,
+                starsFilm: starsInput,
               }}
               validate={(values) => {
                 const errorAuxFilm: filmErrorForm = { ...INITIAL_STATE };
@@ -63,6 +120,7 @@ const FormOfFilms = () => {
                   starsFilm,
                 } = values;
                 if (nameFilm.length === 0) {
+                  console.log("empty " + nameFilm);
                   errors.nameFilm = "Required";
                   errorAuxFilm.isNameError = true;
                 }
@@ -123,6 +181,8 @@ const FormOfFilms = () => {
                 console.log(errorStateFilm); */
                 /* console.log("update error Aux");
                 console.log(errorStateFilm); */
+                /* console.log(errors); */
+                console.log(errors);
                 return errors;
               }}
               onSubmit={(values, { setSubmitting }) => {
@@ -143,6 +203,8 @@ const FormOfFilms = () => {
                       type="text"
                       name="nameFilm"
                       placeholder="Name"
+                      onChange={nameInputOnChangeHandler}
+                      /* value={nameInput} */
                       className={` ${
                         errorStateFilm.isNameError ? classes["error-class"] : ""
                       }`}
@@ -158,6 +220,8 @@ const FormOfFilms = () => {
                       className={` ${
                         errorStateFilm.isSagaError ? classes["error-class"] : ""
                       }`}
+                      onChange={sagaInputOnChangeHandler}
+                      /* value={sagaInput} */
                     />
                   </div>
                   <div className={classes["input-container"]}>
@@ -171,6 +235,8 @@ const FormOfFilms = () => {
                           ? classes["error-class"]
                           : ""
                       }`}
+                      onChange={descriptionInputOnChangeHandler}
+                      value={descriptionInput}
                     />
                   </div>
                   <div className={classes["input-container"]}>
@@ -184,6 +250,8 @@ const FormOfFilms = () => {
                           ? classes["error-class"]
                           : ""
                       }`}
+                      onChange={durationInputOnChangeHandler}
+                      /*  value={durationInput} */
                     />
                   </div>
                   <div className={classes["input-container"]}>
@@ -197,6 +265,8 @@ const FormOfFilms = () => {
                           ? classes["error-class"]
                           : ""
                       }`}
+                      onChange={imageUrlInputOnChangeHandler}
+                      /* value={imageUrlInput} */
                     />
                   </div>
                   <div className={`${classes["input-container"]}`}>
@@ -210,16 +280,20 @@ const FormOfFilms = () => {
                           ? classes["error-class"]
                           : ""
                       }`}
+                      onChange={starsInputOnChangeHandler}
+                      /* value={starsInput} */
                     />
                   </div>
 
                   {/* <ErrorMessage name="password" component="div" /> */}
 
+                        <p>{isValid.toString()} valid</p>
+                        <p>{dirty.toString()} dirty</p>
                   <button
                     type="submit"
                     disabled={isSubmitting || !isValid}
                     className={`${classes["btn-form"]} ${
-                      !isValid || !dirty ? classes["btn-form-disabled"] : ""
+                      !isValid  ? classes["btn-form-disabled"] : ""
                     }`}
                   >
                     Submit
@@ -230,8 +304,20 @@ const FormOfFilms = () => {
           </div>
         </div>
 
-        <div className={classes["card-container"]}>
-          <h2>Card</h2>
+        <div className={classes["card-Section"]}>
+          <Card
+            film={{
+              Name: nameInput,
+              Added_Time_Utc: "",
+              Description: descriptionInput,
+              Duration_Minutes: durationInput,
+              Genders: [],
+              Image_Url: imageUrlInput,
+              Saga: sagaInput,
+              Stars: +starsInput,
+            }}
+            isEditing={true}
+          />
         </div>
       </div>
     </div>
