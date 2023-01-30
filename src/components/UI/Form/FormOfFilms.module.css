@@ -1,10 +1,22 @@
+.full-page {
+  background: rgb(26, 212, 221);
+  background: linear-gradient(
+    90deg,
+    rgba(26, 212, 221, 1) 0%,
+    rgba(7, 160, 195, 1) 50%,
+    rgba(92, 69, 252, 1) 100%
+  );
+  min-height: 100vh;
+  padding-top: 50px;
+}
+
 .form-view {
   display: flex;
   width: 95%;
   margin: 0 auto;
   justify-content: space-between;
   column-gap: 10px;
-  margin-top: 30px;
+  /*  margin-top: 30px; */
 }
 
 .form-container {
@@ -21,6 +33,10 @@
   /* border: 2px solid green; */
   padding: 10px 0;
 }
+.form-inside h1 {
+  color: #07a0c3;
+  text-transform: uppercase;
+}
 
 .input-container {
   width: 100%;
@@ -31,6 +47,7 @@
   width: 100%;
   padding: 10px 0;
   margin: 0;
+  margin-bottom: 20px;
 
   /*  border: 0; */
 
@@ -38,10 +55,47 @@
   border-left: 0;
   border-right: 0;
   /*  border-bottom: 10px; */
-  border-color: #07A0C3;
+  /* border-color: #07a0c3; */
+}
+
+.input-container textarea {
+  width: 100%;
+  min-height: 60px;
+  resize: none;
 }
 
 .input-container input:focus {
   outline: none;
-  border-color: rgb(224, 224, 81);
+  border-color: #07a0c3;
+}
+
+.input-container textarea:focus {
+  outline: none;
+  border-color: #07a0c3;
+}
+
+.btn-form {
+  background: #07a0c3;
+  border-radius: 999px;
+  box-shadow: #07a0c3 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 10px 40px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+  margin: 10px 0;
 }
