@@ -98,6 +98,7 @@ const FormOfFilms = () => {
                 imageUrlFilm: imageUrlInput,
                 starsFilm: starsInput,
               }}
+              validateOnMount={true}
               validate={(values) => {
                 const errorAuxFilm: filmErrorForm = { ...INITIAL_STATE };
                 console.log("mi ninitla State default");
@@ -182,7 +183,7 @@ const FormOfFilms = () => {
                 /* console.log("update error Aux");
                 console.log(errorStateFilm); */
                 /* console.log(errors); */
-                console.log(errors);
+                //console.log(errors);
                 return errors;
               }}
               onSubmit={(values, { setSubmitting }) => {
@@ -287,13 +288,16 @@ const FormOfFilms = () => {
 
                   {/* <ErrorMessage name="password" component="div" /> */}
 
-                        <p>{isValid.toString()} valid</p>
-                        <p>{dirty.toString()} dirty</p>
+                  {/* <p>{isValid.toString()} valid</p>
+                  <p>{dirty.toString()} dirty</p>
+                  <p>Disabled : {(isValid && !dirty).toString()}</p> */}
                   <button
                     type="submit"
                     disabled={isSubmitting || !isValid}
                     className={`${classes["btn-form"]} ${
-                      !isValid  ? classes["btn-form-disabled"] : ""
+                      isSubmitting || !isValid
+                        ? classes["btn-form-disabled"]
+                        : ""
                     }`}
                   >
                     Submit
