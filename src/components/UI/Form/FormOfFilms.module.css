@@ -1,0 +1,161 @@
+.full-page {
+  background: rgb(26, 212, 221);
+  background: linear-gradient(
+    90deg,
+    rgba(26, 212, 221, 1) 0%,
+    rgba(7, 160, 195, 1) 50%,
+    rgba(92, 69, 252, 1) 100%
+  );
+  min-height: 100vh;
+  /*  padding-top: 50px; */
+}
+
+.form-view {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 0 auto;
+  padding: 50px 0;
+  row-gap: 30px;
+  /* flex-direction: column; */
+  /* row-gap: 30px; */
+
+  /*  margin-top: 30px; */
+}
+
+@media (min-width: 750px) {
+  .form-view {
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 10px;
+    /*  margin-top: 30px; */
+  }
+}
+
+@media (min-width: 992px) {
+  .form-view {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+
+    /*  margin-top: 30px; */
+  }
+}
+
+.form-container {
+  flex: 1;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+.form-inside {
+  width: 90%;
+  margin: 0 auto;
+  /* border: 2px solid green; */
+  padding: 10px 0;
+}
+.form-inside h1 {
+  color: #07a0c3;
+  text-transform: uppercase;
+}
+
+.input-container {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.input-container input {
+  outline: none;
+  width: 100%;
+  padding: 10px 0;
+  margin: 0;
+  margin-bottom: 20px;
+
+  /*  border: 0; */
+
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  /*  border-bottom: 10px; */
+  /* border-color: #07a0c3; */
+}
+
+.input-container textarea {
+  width: 100%;
+  min-height: 60px;
+  resize: none;
+}
+
+.input-container input:focus {
+  outline: none;
+  border-color: #07a0c3;
+}
+
+.input-container textarea:focus {
+  outline: none;
+  border-color: #07a0c3;
+}
+
+.btn-form {
+  background: #07a0c3;
+  border-radius: 999px;
+  box-shadow: #07a0c3 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 10px 40px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+  margin: 10px 0;
+}
+
+.btn-form-disabled {
+  background-color: gray !important;
+  cursor: not-allowed;
+}
+
+.error-class {
+  /* outline: none; */
+  /* border-color: red; */
+  /*  animation: name-of-animation 1s infinite !important; */
+}
+
+@keyframes name-of-animation {
+  0% {
+    border-color: red;
+  }
+  100% {
+    border-color: white;
+  }
+}
+
+.card-Section {
+  margin: 0 auto;
+  width: 90%;
+}
+
+@media (min-width: 750px) {
+  .card-Section {
+    width: 80%;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-Section {
+    width: 50%;
+  }
+}
