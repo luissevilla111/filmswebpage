@@ -1,7 +1,17 @@
-import { Formik, Form, Field, ErrorMessage, FormikErrors } from "formik";
+import axios from "axios";
+import {
+  Formik,
+  Form,
+  Field,
+  ErrorMessage,
+  FormikErrors,
+  FormikHelpers,
+} from "formik";
 import { useState } from "react";
+import { Film, FilmAdd, SweetAlert } from "../../../models/Film";
 import Card from "../card/Card";
 import classes from "./FormOfFilms.module.css";
+import Swal from "sweetalert2";
 
 interface filmErrorForm {
   isNameError: boolean;
@@ -20,6 +30,10 @@ const INITIAL_STATE: filmErrorForm = {
   isImageUrlError: false,
   isStarsError: false,
 };
+
+const API_URL = process.env.REACT_APP_API_FILMS
+  ? process.env.REACT_APP_API_FILMS
+  : "";
 
 const FormOfFilms = () => {
   const [errorStateFilm, setErrorStateFilm] =
@@ -79,6 +93,38 @@ const FormOfFilms = () => {
     const newStars = event.currentTarget.value;
 
     setStarsInput(newStars);
+  };
+
+  const addFilm = async (film: FilmAdd) => {
+    try {
+      const response = await axios.post<Film>(`${API_URL}/films`, film);
+      const newFilm = response.data;
+      console.log(newFilm);
+      return newFilm;
+    } catch (err) {
+      //Print Error
+      console.log(err);
+      return null;
+    }
+  };
+
+  const restartValuesFom = () => {
+    setNameInput("");
+    setSagaInput("");
+    setDescriptionInput("");
+    setDurationInput("");
+    setImageUrlInput("");
+    setStarsInput("");
+  };
+
+  const showAlert = async (alertObj: SweetAlert) => {
+    const { icon, text, title } = alertObj;
+    console.log("Que esta pasando");
+    await Swal.fire({
+      icon,
+      title,
+      text,
+    });
   };
 
   return (
@@ -186,12 +232,57 @@ const FormOfFilms = () => {
                 //console.log(errors);
                 return errors;
               }}
-              onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
+              onSubmit={async (values, { setSubmitting, resetForm }) => {
+                /* setTimeout(() => {
                   alert(JSON.stringify(values, null, 2));
 
                   setSubmitting(false);
-                }, 400);
+                }, 400); */
+
+                const {
+                  sagafilm: saga,
+                  nameFilm: name,
+                  starsFilm: stars,
+                  descriptionFilm: description,
+                  durationtionFilm: durationMinutes,
+                  imageUrlFilm: imageUrl,
+                } = values;
+
+                const filmToAdd: FilmAdd = {
+                  saga,
+                  name,
+                  stars: +stars,
+                  description,
+                  addedTimeUtc: "",
+                  durationMinutes,
+                  imageUrl,
+                  genders: [],
+                };
+                const newFilm = await addFilm(filmToAdd);
+
+                if (!newFilm) {
+                  console.log("Error Film No Added 1");
+                  const alertObj: SweetAlert = {
+                    icon: "error",
+
+                    text: "the Film Was Not Added try again",
+                    title: "Upps Something Went Wrong",
+                  };
+                  await showAlert(alertObj);
+
+                  return;
+                }
+
+                const alertObj: SweetAlert = {
+                  icon: "success",
+                  title: "Perfect",
+                  text: "the Film was Created",
+                };
+                await showAlert(alertObj);
+                setSubmitting(false);
+                resetForm({ values });
+                restartValuesFom();
+                console.log("Film Added");
               }}
             >
               {({ isSubmitting, isValid, dirty }) => (
