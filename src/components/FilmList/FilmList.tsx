@@ -14,6 +14,7 @@ interface IPagination {
 const FilmList = () => {
   const [films, setFilms] = useState<Film[]>([]);
   const [pagination, setPagination] = useState<ILastKey | null>(null);
+  const [lastFilmDeleted, setLastFilmDeleted] = useState<string>("");
 
   const fetchFilmsHandler = useCallback(async (params: ILastKey | null) => {
     try {
@@ -39,6 +40,11 @@ const FilmList = () => {
     }
   }, []);
 
+  const refreshPage = async (name: string, saga: string) => {
+    setLastFilmDeleted(name + "-" + saga);
+    await fetchFilmsHandler(null);
+  };
+
   useEffect(() => {
     fetchFilmsHandler(null);
   }, [fetchFilmsHandler]);
@@ -57,7 +63,14 @@ const FilmList = () => {
             Saga,
             Stars,
           } = film;
-          return <Card film={film} isEditing={false} key={`${Saga}_${Name}`} />;
+          return (
+            <Card
+              film={film}
+              isEditing={false}
+              key={`${Saga}_${Name}`}
+              refreshPageByDelete={refreshPage}
+            />
+          );
         })}
       </div>
       <Button

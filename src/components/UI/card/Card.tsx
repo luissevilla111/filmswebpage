@@ -10,7 +10,11 @@ import Swal from "sweetalert2";
 const API_URL = process.env.REACT_APP_API_FILMS
   ? process.env.REACT_APP_API_FILMS
   : "";
-const Card: React.FC<{ film: Film; isEditing: boolean }> = (props) => {
+const Card: React.FC<{
+  film: Film;
+  isEditing: boolean;
+  refreshPageByDelete?: (name: string, saga: string) => {};
+}> = (props) => {
   const myStyle = {
     backgroundImage: `url(${props.film.Image_Url})`,
     backgroundSize: "cover",
@@ -46,6 +50,8 @@ const Card: React.FC<{ film: Film; isEditing: boolean }> = (props) => {
           text: "The Film was Deleted Correctly",
         });
       }
+      if (props.refreshPageByDelete)
+        await props.refreshPageByDelete(name, saga);
     } catch (err) {}
   };
 
