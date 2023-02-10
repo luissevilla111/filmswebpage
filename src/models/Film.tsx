@@ -35,4 +35,6 @@ export interface SweetAlert {
   icon: "warning" | "error" | "success" | "info";
   title: string;
   text: string;
+  showCloseButton?: boolean;
+  showConfirmButton?: boolean;
 }

@@ -21,17 +21,32 @@ const Card: React.FC<{
   };
 
   const showAlert = async (alertObj: SweetAlert) => {
-    const { icon, text, title } = alertObj;
-    await Swal.fire({
+    const { icon, text, title, showCloseButton, showConfirmButton } = alertObj;
+    return await Swal.fire({
       icon,
       title,
       text,
+      showCloseButton,
+      showConfirmButton,
     });
   };
 
   const deleteFilm = async (name: string, saga: string) => {
     console.log(name, saga);
     try {
+      const resultAlert = await showAlert({
+        icon: "warning",
+        title: `Are you sure you want to delete this film ${name}?`,
+        text: "This operation can not be undo",
+        showCloseButton: true,
+        showConfirmButton: true,
+      });
+
+      if (!resultAlert.isConfirmed) {
+        console.log("No Elimines");
+        return;
+      }
+      console.log("Eliminar");
       const filmDeleted = await axios.delete<{ message: string }>(
         `${API_URL}/films`,
         {
