@@ -1,14 +1,52 @@
-import { Film } from "../../../models/Film";
+import { Film, SweetAlert } from "../../../models/Film";
 import classes from "./Card.module.css";
 import Stat from "./Stat/Stat";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark,faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCircleXmark, faTrash } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import Swal from "sweetalert2";
 
+const API_URL = process.env.REACT_APP_API_FILMS
+  ? process.env.REACT_APP_API_FILMS
+  : "";
 const Card: React.FC<{ film: Film; isEditing: boolean }> = (props) => {
   const myStyle = {
     backgroundImage: `url(${props.film.Image_Url})`,
     backgroundSize: "cover",
+  };
+
+  const showAlert = async (alertObj: SweetAlert) => {
+    const { icon, text, title } = alertObj;
+    await Swal.fire({
+      icon,
+      title,
+      text,
+    });
+  };
+
+  const deleteFilm = async (name: string, saga: string) => {
+    console.log(name, saga);
+    try {
+      const filmDeleted = await axios.delete<{ message: string }>(
+        `${API_URL}/films`,
+        {
+          data: {
+            name,
+            saga,
+          },
+        }
+      );
+
+      console.log(filmDeleted.data.message);
+      if (filmDeleted.data.message === "deleted") {
+        await showAlert({
+          icon: "success",
+          title: "Success",
+          text: "The Film was Deleted Correctly",
+        });
+      }
+    } catch (err) {}
   };
 
   const getShortenText = (text: string) => {
@@ -38,7 +76,10 @@ const Card: React.FC<{ film: Film; isEditing: boolean }> = (props) => {
           ></Stat>
         </div>
       </div>
-      <div className={classes["icon-container"]}>
+      <div
+        className={classes["icon-container"]}
+        onClick={deleteFilm.bind(null, props.film.Name, props.film.Saga)}
+      >
         <FontAwesomeIcon icon={faTrash} />
       </div>
     </div>

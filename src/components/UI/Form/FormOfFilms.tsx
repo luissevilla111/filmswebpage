@@ -119,7 +119,6 @@ const FormOfFilms = () => {
 
   const showAlert = async (alertObj: SweetAlert) => {
     const { icon, text, title } = alertObj;
-    console.log("Que esta pasando");
     await Swal.fire({
       icon,
       title,
