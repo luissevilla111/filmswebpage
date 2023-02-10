@@ -1,15 +1,17 @@
-
-.card-holder{
+.card-holder {
   position: relative;
   filter: grayscale(1);
-  transition: all 0.3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
+}
+
+.no-grayScale {
+  filter: grayscale(0) !important;
 }
 .card-holder:hover {
   transform: scale(1.1);
   cursor: pointer;
   filter: grayscale(0);
   z-index: 1;
-  
 }
 
 .card-container {
@@ -27,13 +29,11 @@
   display: grid;
   grid-template-rows: 0.8fr 1fr auto;
   margin: 0 auto;
-  
-  
 }
 
 .card-edit {
   min-width: 50% !important;
-  filter: grayscale(0) !important;
+  /* filter: grayscale(0) !important; */
   /* filter: grayscale(0) !important; */
 }
 
@@ -96,13 +96,13 @@
   /* width: 100%; */
   top: -20px;
   right: -15px;
- /*  background-color: #dd1c1a; */
+  /*  background-color: #dd1c1a; */
   font-size: 35px;
   color: red;
- 
+
   padding: 5px;
   /* background-color: yellow; */
 }
-.icon-container:hover{
+.icon-container:hover {
   /* cursor: ; */
-} 
+}

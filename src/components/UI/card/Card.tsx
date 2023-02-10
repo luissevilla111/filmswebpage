@@ -75,7 +75,11 @@ const Card: React.FC<{
   };
 
   return (
-    <div className={classes["card-holder"]}>
+    <div
+      className={`${classes["card-holder"]} ${
+        props.isEditing ? classes["no-grayScale"] : ""
+      }`}
+    >
       <div
         className={`${classes["card-container"]} ${
           props.isEditing ? classes["card-edit"] : ""
@@ -97,12 +101,14 @@ const Card: React.FC<{
           ></Stat>
         </div>
       </div>
-      <div
-        className={classes["icon-container"]}
-        onClick={deleteFilm.bind(null, props.film.Name, props.film.Saga)}
-      >
-        <FontAwesomeIcon icon={faTrash} />
-      </div>
+      {!props.isEditing && (
+        <div
+          className={classes["icon-container"]}
+          onClick={deleteFilm.bind(null, props.film.Name, props.film.Saga)}
+        >
+          <FontAwesomeIcon icon={faTrash} />
+        </div>
+      )}
     </div>
   );
 };
