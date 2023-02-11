@@ -1,0 +1,19 @@
+.menu {
+  width: 100%;
+  background-color: #07a0c3;
+  position: fixed;
+}
+
+.menu-list{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 10px;
+    list-style: none;
+}
+
+.navIcon{
+    font-size: 20px;
+    color: white;
+}

@@ -2,6 +2,17 @@
   text-align: center;
 }
 
+.content {
+  /* background-color: #61dafb; */
+  display: grid;
+  grid-template-rows: 1fr auto;
+  position: relative;
+}
+
+.routes-container {
+  padding-top: 30px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
