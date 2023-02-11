@@ -292,7 +292,9 @@ const FormOfFilms: React.FC<{ film: Film | null }> = (props) => {
                 const alertObj: SweetAlert = {
                   icon: "success",
                   title: "Perfect",
-                  text: "the Film was Created",
+                  text: !filmPassed
+                    ? "the Film was Created"
+                    : "The Film Was Updated",
                 };
                 await showAlert(alertObj);
                 setSubmitting(false);
