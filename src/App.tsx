@@ -12,8 +12,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/films" element={<FilmsPage />} />
-          <Route path="/films" element={<FilmsPage />} />
-          <Route path="/addfilm" element={<FilmForm />} />
+          <Route path="/customfilm" element={<FilmForm />} />
+         {/*  <Route path="/customfilm/:filmId" element={<FilmForm />} /> */}
           <Route
         path="/"
         element={<Navigate to="/films" replace />}

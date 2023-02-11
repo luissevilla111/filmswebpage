@@ -35,16 +35,25 @@ const API_URL = process.env.REACT_APP_API_FILMS
   ? process.env.REACT_APP_API_FILMS
   : "";
 
-const FormOfFilms = () => {
+const FormOfFilms: React.FC<{ film: Film | null }> = (props) => {
   const [errorStateFilm, setErrorStateFilm] =
     useState<filmErrorForm>(INITIAL_STATE);
 
-  const [nameInput, setNameInput] = useState("");
-  const [sagaInput, setSagaInput] = useState("");
-  const [descriptionInput, setDescriptionInput] = useState("");
-  const [durationInput, setDurationInput] = useState("");
-  const [imageUrlInput, setImageUrlInput] = useState("");
-  const [starsInput, setStarsInput] = useState("");
+  const filmPassed = props.film;
+  const [nameInput, setNameInput] = useState(filmPassed ? filmPassed.Name : "");
+  const [sagaInput, setSagaInput] = useState(filmPassed ? filmPassed.Saga : "");
+  const [descriptionInput, setDescriptionInput] = useState(
+    filmPassed ? filmPassed.Description : ""
+  );
+  const [durationInput, setDurationInput] = useState(
+    filmPassed ? filmPassed.Duration_Minutes.toString() : ""
+  );
+  const [imageUrlInput, setImageUrlInput] = useState(
+    filmPassed ? filmPassed.Image_Url : ""
+  );
+  const [starsInput, setStarsInput] = useState(
+    filmPassed ? filmPassed.Stars.toString() : ""
+  );
 
   const nameInputOnChangeHandler = (
     event: React.FormEvent<HTMLInputElement>
@@ -296,6 +305,7 @@ const FormOfFilms = () => {
                       placeholder="Name"
                       onChange={nameInputOnChangeHandler}
                       /* value={nameInput} */
+                      disabled={filmPassed}
                       className={` ${
                         errorStateFilm.isNameError ? classes["error-class"] : ""
                       }`}
@@ -312,6 +322,7 @@ const FormOfFilms = () => {
                         errorStateFilm.isSagaError ? classes["error-class"] : ""
                       }`}
                       onChange={sagaInputOnChangeHandler}
+                      disabled={filmPassed}
                       /* value={sagaInput} */
                     />
                   </div>

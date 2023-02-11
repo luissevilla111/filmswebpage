@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = process.env.REACT_APP_API_FILMS
   ? process.env.REACT_APP_API_FILMS
@@ -19,6 +20,7 @@ const Card: React.FC<{
     backgroundImage: `url(${props.film.Image_Url})`,
     backgroundSize: "cover",
   };
+  let navigate = useNavigate();
 
   const showAlert = async (alertObj: SweetAlert) => {
     const { icon, text, title, showCloseButton, showConfirmButton } = alertObj;
@@ -74,6 +76,21 @@ const Card: React.FC<{
     return text.substring(0, 200).concat("...");
   };
 
+  const goToEditFilm = (film: Film) => {
+    if (props.isEditing) {
+      console.log("You can not navigate");
+      return;
+    }
+
+    const navigateURL = `/customfilm`;
+
+    //const filmStateToPass: film
+
+    navigate(`${navigateURL}`, {
+      state: film,
+    });
+  };
+
   return (
     <div
       className={`${classes["card-holder"]} ${
@@ -84,6 +101,7 @@ const Card: React.FC<{
         className={`${classes["card-container"]} ${
           props.isEditing ? classes["card-edit"] : ""
         }`}
+        onClick={goToEditFilm.bind(null, props.film)}
       >
         <div className={classes["card-img"]} style={myStyle}>
           {/* <img src={props.film.Image_Url} alt="no imag"></img> */}
