@@ -106,12 +106,18 @@ const FormOfFilms: React.FC<{ film: Film | null }> = (props) => {
 
   const addFilm = async (film: FilmAdd) => {
     try {
+      const options: any = {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        },
+      };
       let response: any = "";
       if (!filmPassed) {
-        response = await axios.post<Film>(`${API_URL}/films`, film);
+        response = await axios.post<Film>(`${API_URL}/films`, film, options);
       } else {
         //console.log("Update");
-        response = await axios.put<Film>(`${API_URL}/films`, film);
+        response = await axios.put<Film>(`${API_URL}/films`, film, options);
       }
       const response1 = response as AxiosResponse<Film, any>;
       const newFilm = response1.data;
