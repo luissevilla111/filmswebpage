@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import {
   Formik,
   Form,
@@ -106,8 +106,16 @@ const FormOfFilms: React.FC<{ film: Film | null }> = (props) => {
 
   const addFilm = async (film: FilmAdd) => {
     try {
-      const response = await axios.post<Film>(`${API_URL}/films`, film);
-      const newFilm = response.data;
+      let response: any = "";
+      if (!filmPassed) {
+        response = await axios.post<Film>(`${API_URL}/films`, film);
+      } else {
+        //console.log("Update");
+        response = await axios.put<Film>(`${API_URL}/films`, film);
+      }
+      const response1 = response as AxiosResponse<Film, any>;
+      const newFilm = response1.data;
+      console.log("Film que ??");
       console.log(newFilm);
       return newFilm;
     } catch (err) {
@@ -401,7 +409,7 @@ const FormOfFilms: React.FC<{ film: Film | null }> = (props) => {
                         : ""
                     }`}
                   >
-                    Submit
+                    {filmPassed ? "UPDATE" : "CREATE"}
                   </button>
                 </Form>
               )}

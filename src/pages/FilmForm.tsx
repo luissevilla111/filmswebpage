@@ -4,10 +4,10 @@ import { useLocation } from "react-router";
 
 const FilmForm = () => {
   const location = useLocation();
-  console.log("Location");
+  //console.log("Location");
 
   const filmState = location.state as Film;
-  console.log(filmState);
+  /* console.log(filmState); */
   const film = filmState ? filmState : null;
   return <FormOfFilms film={film} />;
 };
